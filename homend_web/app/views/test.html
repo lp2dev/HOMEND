@@ -1,0 +1,111 @@
+<div ng-controller="testController">
+	<input type="text" ng-model="nombre">
+		{{ nombre }}
+	<input type="button" ng-click="saludo()" value ="Saludo">
+	<table>
+		<tr>
+			<td>last name</td>
+			<td>first name</td>
+		</tr>
+		<tr ng-repeat="d in personas | filter: nombre">
+			<td>{{ d.last_name }}</td>
+			<td>{{ d.first_name }}</td>
+		</tr>
+	</table>
+</div>
+<!--
+<head>
+<style type="text/css">
+  input{color: blue;background: aqua;}
+  HTML,BODY{cursor: url("multimedia/cursor4.cur"), url("multimedia/cursor4.gif"), url("multimedia/cursor4.ani"), auto;}
+  ::-webkit-scrollbar{height: 20px;overflow: visible;width: 15px;}
+  ::-webkit-scrollbar-track{background-color: aqua;border-radius: 9px;}
+  ::-webkit-scrollbar-thumb{background-color: blue;border-radius: 9px;}
+</style>
+</head>
+
+<body>
+<div ng-controller="ClienteController">
+  
+
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+      <md-button ng-click="new()" class="md-icon-button md-primary md-hue-1" aria-label="add">
+      <md-tooltip md-autohide>Nuevo</md-tooltip>
+      <md-icon md-svg-icon="icons/ic_add_24px.svg"></md-icon>
+      </md-button>
+
+   
+      <md-button ng-click="listAll(page,options.count)" class="md-icon-button md-primary md-hue-1" aria-label="listar todo">
+      <md-tooltip md-autohide>Listar todo</md-tooltip>
+      <md-icon md-svg-icon="icons/ic_reorder_24px.svg"></md-icon> 
+  </md-button>
+
+      
+
+      <span flex></span>
+      <md-input-container md-no-float>
+      <input placeholder="buscar" ng-model="query" ng-keyup="list(page)" >
+      </md-input-container>
+      </div>
+  </md-toolbar>
+  <object type="application/x-shockwave-flash" data="multimedia/clockdig.swf" width="130" height="130" ALIGN="right">
+      <param name="movie" value="multimedia/clockdig.swf" />
+      <param name="wmode" value="transparent" />
+      <param name="allowScriptAccess" value="always" />
+      </object><br>
+
+<font color="white" size="7" style="background-color: DeepSkyBlue;">LISTA DE CLIENTES REGISTRADOS</font>
+
+      <h1><a href="javascript:print()"><span style="color: blue"><span style="font-family: Comic Sans MS;"><span style="font-size: x-large;">Imprimir o Descargar </span></span></span></a></h1>
+
+  <table  mi-table BORDER="10" bordercolor="#4099FF"  cols="10" WIDTH="50%" >
+  <thead>
+    <tr>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>#</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>NOMBRE</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>AP. PATERNO</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>AP. MATERNO</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>TIPO DOC.</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>NUM. DOC.</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>DIRECCION</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>TELEFONO</b></td>
+      <td style="text-align: center; color:FUCHSIA" BGCOLOR="#4099FF"><b>EMAIL</b></td>
+      <td colspan='2' align='center' color="FUCHSIA" BGCOLOR="#4099FF"><b>ACCIONES</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="d in d_list | orderBy:'nombre' | filter:searchText" class="info" style="background-color:{{$even?'aqua':'DeepSkyBlue'}}" >
+      <td>{{ d.id }}</td>
+      <td align="center"><B><I>{{ d.nombre }}</i></b></td>
+      <td align="center"><B><I>{{ d.apPaterno }}</i></b></td>
+      <td align="center"><B><I>{{ d.apMaterno }}</i></b></td>
+      <td align="center"><B><I>{{ d.tipoDoc }}</i></b></td>
+      <td align="center"><B><I>{{ d.numDoc }}</i></b></td>
+      <td align="center"><B><I>{{ d.direccion }}</i></b></td>
+      <td align="center"><B><I>{{ d.telefono }}</i></b></td>
+      <td align="center"><B><I>{{ d.email }}</i></b></td>
+      <td><md-button href="" ng-click="get(d)" class="md-raised md-primary">EDITAR</md-button></td>
+      <td><md-button href="" ng-click="delete(d)" class="md-raised md-warn">ELIMINAR</md-button></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="11">
+
+      <mi-pagination
+page="options.page"
+pages="options.pages"
+next="options.next"
+previous="options.previous"
+rango="options.range"
+activado="myactive"
+accion="list(page)">
+</mi-pagination>
+
+      </td>
+    </tr>
+  </tfoot>
+  </table>
+</div>
+</body>

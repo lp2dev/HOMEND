@@ -1,0 +1,29 @@
+
+
+<md-dialog aria-label="Form">
+	<md-content class="md-padding" style="background-color: #AFEEEE; " >
+	<h3>REGISTRO {{categoria.id}}</h3>
+		<form name="myform" autocomplete="on">
+			<div layout layout-sm="column">
+				<md-input-container class="md-icon-float" ><label>codigo :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="categoria.codigo" ng-required="true"  type="text" placeholder="codigo"></md-input-container>
+
+				<md-input-container  class="md-icon-float" ><label>nombre :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="categoria.nombre" ng-required="true" placeholder="nombre" type="text"></md-input-container>
+			</div>
+			
+			<div layout layout-sm="column">
+				<md-checkbox ng-model="categoria.estado" aria-label="Estado">
+				Estado :
+				</md-checkbox>
+				</md-input-container>
+			</div>
+
+	</md-content>
+		</md-dialog-content>
+			<div class="md-actions" layout="row">
+				<span ></span>
+					<md-button type="submit"  ng-click="save()" class="md-raised md-primary">GUARDAR</md-button>
+					<md-button type="reset" ng-click="cancel()" class="md-raised md-warn">SALIR</md-button>
+			</div>
+		</md-dialog>
+		</form>
+</md-dialog>

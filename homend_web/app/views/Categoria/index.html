@@ -1,0 +1,97 @@
+
+<html ng-app="backendApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Mazter</title>
+    
+</head>
+<script language="javascript">
+function printdiv(printpage)
+{
+var headstr = "<html><head><title></title></head><body>";
+var footstr = "</body>";
+var newstr = document.all.item(printpage).innerHTML;
+var oldstr = document.body.innerHTML;
+document.body.innerHTML = headstr+newstr+footstr;
+window.print();
+document.body.innerHTML = oldstr;
+return false;
+}
+</script>
+
+<style type="text/css">
+  header{background:url("multimedia/4.gif" ) repeat;width: 100%;height: 100%;z-index: -1;border-spacing: 4px;margin: 0;padding: 0;text-align: left;}
+  table{color:purple;background-color: aqua;}
+</style>
+
+<body >
+  <header ng-controller="CategoriaController">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+      <md-button ng-click="new()" class="md-raised md-primary">NUEVO<md-tooltip md-autohide style="background-color: white;">Nuevo</md-tooltip>
+      </md-button>
+      <md-button ng-click="listAll(page,options.count)" class="md-icon-button md-primary md-hue-1" aria-label="listar todo">
+      <md-tooltip md-autohide style="background-color: white;">Listar todo</md-tooltip><md-icon md-svg-icon="icons/ic_reorder_24px.svg"></md-icon> 
+      </md-button>
+      <a href="javascript:print()"><md-button class="md-raised md-warn" align="right">Imprimir<md-tooltip md-autohide style="background-color: white;">Imprimir</md-tooltip</md-button></a>
+      <md-button class="md-raised md-danger" target="_blank" align="right" style="text-align: center; color:red" ><a class="btn btn-success" id="excel" ng-click=(exportData())><i class="glyphicon glyphicon-plus"></i>&nbsp;EXCEL<md-tooltip md-autohide style="background-color: white;">EXCEL</md-tooltip></a></md-button>
+
+      <a class="btn btn-success" id="excel" ng-click="printIt()"><i class="glyphicon glyphicon-plus"></i>&nbsp;PDF</a>
+      <object type="application/x-shockwave-flash" data="multimedia/clockdig.swf" width="130" height="130" ALIGN="right">
+      <param name="movie" value="multimedia/clockdig.swf"/>
+      <param name="wmode" value="transparent"/>
+      <param name="allowScriptAccess" value="always"/>
+      </object>
+      <span flex></span>
+      <md-input-container md-no-float>
+      <input placeholder="buscar" ng-model="query" ng-keyup="list(page)" style="background-color: aqua; color:fuchsia" autocomplete="on" list="searchText" autofocus="autofocus" type="search">
+      </md-input-container>
+      </div>
+    </md-toolbar>
+    
+    
+
+    <input name="b_print" type="button" class="ipt"   onClick="printdiv('table');" value=" Print "><br><br>
+
+    <div id="table" style="overflow-x:auto;" >
+      <table id="searchText" align="center" BORDER="11" bordercolor="#4099FF" style="width:100%" class='export-table'>
+        <thead>
+          <tr>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="50">#</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">codigo</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">nombre</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">estado</th>
+            <th colspan='2' align='center' BGCOLOR="FUCHSIA"><b color="white">ACCIONES</b></th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr ng-repeat="d in d_list | orderBy:'id'" class="info" style="background-color:{{$even?'aqua':'DeepSkyBlue'}}">
+              <td>{{ d.id }}</td>
+              <td align="center"><B><I>{{ d.codigo }}</i></b></td>
+              <td align="center"><B><I>{{ d.nombre }}</i></b></td>
+              <td align="center"><B><I>{{ d.estado }}</i></b></td>
+              <td><md-button href="" ng-click="get(d)" class="md-raised md-primary">EDITAR</md-button></td>
+              <td><md-button href="" ng-click="delete(d)" class="md-raised md-warn">ELIMINAR</md-button></td>
+            </tr>
+          </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="11">
+                  <mi-pagination
+                  page="options.page"
+                  pages="options.pages"
+                  next="options.next"
+                  previous="options.previous"
+                  rango="options.range"
+                  activado="myactive"
+                  accion="list(page)">
+                  </mi-pagination>
+                </td>
+              </tr>
+            </tfoot>
+      </table>
+      <br>
+    </div>
+  </header>
+</body>
+</html>

@@ -1,0 +1,130 @@
+
+
+
+<html ng-app="backendApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Mazter</title>
+
+    <style type="text/css">
+    header{background:url("multimedia/4.gif") repeat;width: 100%;height: 100%;z-index: -1;border-spacing: 4px;margin: 0;padding: 0;text-align: left;}
+    table{color:purple;background-color: aqua;}
+    input{color: red;background: blue;}
+    div{color: blue;text-align: center;}
+    body{BORDER-RIGHT: blue 14px outset;BORDER-TOP: blue 14px outset;BORDER-LEFT: blue 14px outset;BORDER-BOTTOM: blue 14px outset;}
+    p{border: blue 5px double; background-color: fuchsia;color:white;}
+    ::-webkit-scrollbar{height: 20px;overflow: visible;width: 15px;}
+    ::-webkit-scrollbar-track{background-color: aqua;border-radius: 9px;}
+    ::-webkit-scrollbar-thumb{background-color: blue;border-radius: 9px;}
+    HTML,BODY{cursor: url("multimedia/cursor5.gif"),default;}
+    a.navbar:hover{color:red; font-weight:bold;background-image:url(http://www.nackvision.com/myspace/links/lightningline.gif);} a:hover, a.redlink:hover, a.navbar:hover {background-image:url(http://www.nackvision.com/myspace/links/lightningline.gif); text-decoration:none; border:0px solid;} a:hover img {background-image:url(http://www.nackvision.com/myspace/links/lightningline.gif); filter:alpha(finishopacity=0, style=2); }
+    h1{background-color: fuchsia;color:white;}
+
+   
+    </style>
+    
+</head>
+
+<body>
+  <header ng-controller="UsuarioController">
+    <a href="multimedia/camara.gif" style="right: 0px; position: fixed; right: 0px;">
+        <img src="multimedia/camara.gif" alt="" />
+    </a>
+    <a href='https://www.facebook.com/joel.zapana.94' title='Síguenos en Facebook' target="_blank"><img border='0' src='multimedia/facebook.jpg' style='display:scroll;position:fixed;bottom:225px;right:0px;' WIDTH="50" HEIGHT="50" alt=""></a>
+    <!--<marquee behavior="scroll" direction="down" style="position:fixed; left:130px; top:10px; width:95px; height:848px;" scrollamount="3"><img src="multimedia/Leo.jpg" /></marquee>-->
+    <!--<a href="javascript:history.go(-1)"><md-button class="md-raised md-warn">ATRAS<md-tooltip md-autohide style="background-color: white;">ATRAS</md-tooltip></md-button></a>
+    <a href="javascript:history.go(1)"><md-button class="md-raised md-warn">ADELANTE<md-tooltip md-autohide style="background-color: white;">ADELANTE</md-tooltip></md-button></a>-->
+    <br>
+    <p><marquee><font size="5" ><i>Visitenos ---------> https://www.Mazter.com</i></font></marquee></p>
+    <font color="white" size="7" style="background-color: DeepSkyBlue;" ALIGN="left">LISTA DE USUARIOS</font>
+    <audio src="multimedia/imagine.mp3" preload="auto" type="audio/mp3" controls  ALIGN="right"></audio>
+    <a href="multimedia/imagine.rar"><img src="multimedia/mp3.gif"  WIDTH="60" HEIGHT="50" BORDER="0"></a>
+
+    <img src="multimedia/leo.jpg"  WIDTH="60" HEIGHT="50" ALIGN="right" BORDER="0" onmouseover="this.src='multimedia/Zoto.jpg';" onmouseout="this.src='multimedia/leo.jpg';" title='Joel Zapana'>
+
+    <a href="https://angularjs.org/" target="_blank"><img src="multimedia/angular.png" WIDTH="50" HEIGHT="50" ALIGN="right" BORDER="0"></img></a>
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+      <md-button ng-click="new()" class="md-raised md-primary">NUEVO<md-tooltip md-autohide style="background-color: white;">Nuevo</md-tooltip>
+      </md-button>
+      <md-button ng-click="listAll(page,options.count)" class="md-icon-button md-primary md-hue-1" aria-label="listar todo">
+      <md-tooltip md-autohide style="background-color: white;">Listar todo</md-tooltip><md-icon md-svg-icon="icons/ic_reorder_24px.svg"></md-icon> 
+      </md-button>
+
+      <md-button class="md-raised md-warn" href="{{url}}" target="_blank">Youtube<md-tooltip md-autohide style="background-color: white;">Youtube</md-tooltip></md-button>
+
+      <md-button class="md-raised md-danger" href="{{url2}}" target="_blank" align="right">Google<md-tooltip md-autohide style="background-color: white;">Google</md-tooltip></md-button>
+      <md-button class="md-raised md-primary" href="{{url1}}" target="_blank" align="right">Facebook<md-tooltip md-autohide style="background-color: white;">Facebook</md-tooltip></md-button>
+
+      <md-button class="md-raised md-warn" href="multimedia/informe.rar" onclick="alert('Se empezara a descargar el Virus, digo el
+      archivo!!!')">Descarga<md-tooltip md-autohide style="background-color: white;">Descarga</md-tooltip></md-button>
+
+      <a href="javascript:print()"><md-button class="md-raised md-warn" align="right">Imprimir<md-tooltip md-autohide style="background-color: white;">Imprimir</md-tooltip</md-button></a>
+    
+      <md-button class="md-raised md-danger" target="_blank" align="right" style="text-align: center; color:red" ><a class="btn btn-success" id="excel" ng-click=(exportData())><i class="glyphicon glyphicon-plus"></i>&nbsp;EXCEL<md-tooltip md-autohide style="background-color: white;">EXCEL</md-tooltip></a></md-button>
+
+      
+      <a class="btn btn-success" id="excel" ng-click="printIt()"><i class="glyphicon glyphicon-plus"></i>&nbsp;PDF</a>
+
+      <object type="application/x-shockwave-flash" data="multimedia/clockdig.swf" width="130" height="130" ALIGN="right">
+      <param name="movie" value="multimedia/clockdig.swf"/>
+      <param name="wmode" value="transparent"/>
+      <param name="allowScriptAccess" value="always"/>
+      </object>
+      <span flex></span>
+      <md-input-container md-no-float>
+      <input placeholder="buscar" ng-model="query" ng-keyup="list(page)" style="background-color: aqua; color:fuchsia" autocomplete="on" list="searchText" autofocus="autofocus" type="search">
+      </md-input-container>
+      </div>
+    </md-toolbar>
+
+    <div id="table">
+      <table id="searchText" align="center" BORDER="11" bordercolor="#4099FF" style="width:100%">
+        <thead>
+          <tr>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="50">#</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">LOGIN</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">PASSWORD</th>
+            <!--<th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">ESTADO</th>-->
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">CLIENTE_NOMBRE</th>
+            <th style="text-align: center; color:white" BGCOLOR="FUCHSIA" HEIGHT="30" WIDTH="100">CATEGORIA_NOMBRE</th>
+            <th colspan='2' align='center' BGCOLOR="FUCHSIA"><b color="white">ACCIONES</b></th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr ng-repeat="d in d_list | orderBy:'id'" class="info" style="background-color:{{$even?'aqua':'DeepSkyBlue'}}">
+              <td>{{ d.id }}</td>
+              <td align="center"><B><I>{{ d.login }}</i></b></td>
+              <td align="center"><B><I>{{ d.password }}</i></b></td>
+              <!--<td align="center"><B><I>{{ d.estado }}</i></b></td>-->
+              <td align="center"><B><I>{{ d.um_nombre }}</i></b></td>
+              <td align="center"><B><I>{{ d.categoria }}</i></b></td>
+              <td><md-button href="" ng-click="get(d)" class="md-raised md-primary">EDITAR</md-button></td>
+              <td><md-button href="" ng-click="delete(d)" class="md-raised md-warn">ELIMINAR</md-button></td>
+            </tr>
+          </tbody>
+
+            <tfoot>
+              <tr>
+                <td colspan="10">
+                  <mi-pagination
+                  page="options.page"
+                  pages="options.pages"
+                  next="options.next"
+                  previous="options.previous"
+                  rango="options.range"
+                  activado="myactive"
+                  accion="list(page)">
+                  </mi-pagination>
+                </td>
+              </tr>
+            </tfoot>
+      </table>
+      <br>
+    </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/oVT2mSuKdcc" frameborder="0" allowfullscreen></iframe>
+      <video src="multimedia/renacer.mp4" width="560" height="315" controls  preload poster="multimedia/Leo.jpg"/>
+  </header>
+</body>
+</html>

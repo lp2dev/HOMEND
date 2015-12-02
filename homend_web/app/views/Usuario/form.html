@@ -1,0 +1,83 @@
+<style type="text/css">
+
+.typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+  }
+
+ .typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+  }
+
+ .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  </style>
+
+<md-dialog aria-label="Form">
+	<md-content class="md-padding" style="background-color: #AFEEEE; " >
+		<form name="myform" autocomplete="on">
+			<h3>REGISTRO {{usuario.id}}</h3>
+
+			<label>cliente_nombre</label>
+			<md-input-container flex>
+			<select ng-model="usuario.cliente_nombre"
+				ng-options="value.id as value.nombre for value in cliente_nombre_list">
+				<option>--</option>
+			</select>{{usuario.cliente_nombre.id}}
+			</md-input-container>
+			<div layout layout-sm="column">
+
+				<md-input-container class="md-icon-float" ><label>LOGIN :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="usuario.login" ng-required="true"  type="text" placeholder="Login"></md-input-container>
+
+				<md-input-container  class="md-icon-float" ><label>PASSWORD :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="usuario.password" ng-required="true" placeholder="Password" type="password"></md-input-container>
+			</div>
+			<!--<div layout layout-sm="column">
+				<md-checkbox ng-model="usuario.estado" aria-label="Estado">
+				Estado :
+				</md-checkbox>
+				</md-input-container>
+			</div>-->
+			
+
+			<label>categoria_nombre</label>
+			<md-input-container flex multiple>
+			<select ng-model="usuario.categoria"
+				ng-options="value.id as value.nombre for value in categoria_nombre_list" multiple id="searchText">
+				<option>--</option>
+			</select>{{usuario.categoria.id}}
+			</md-input-container>
+
+			<div class='container-fluid typeahead-demo' multiple>
+      		<input  flex multiple type="text" ng-model="usuario.categoria" uib-typeahead="value.id as value.nombre for value in categoria_nombre_list | filter:$viewValue | limitTo:8" style="background-color: aqua; color:fuchsia" class="form-control"><option>--</option>
+			</select>{{usuario.categoria.id}}
+    		</div>
+
+    		<md-input-container md-no-float>
+		      <input placeholder="buscar" ng-model="query" ng-keyup="list(page)" style="background-color: aqua; color:fuchsia" autocomplete="on" list="searchText" autofocus="autofocus" type="search">
+		      </md-input-container>
+
+
+	</md-content>
+		</md-dialog-content>
+			<div class="md-actions" layout="row">
+				<span ></span>
+					<md-button type="submit"  ng-click="save()" class="md-raised md-primary">GUARDAR</md-button>
+					<md-button type="reset" ng-click="cancel()" class="md-raised md-warn">SALIR</md-button>
+			</div>
+		</md-dialog>
+		</form>
+</md-dialog>

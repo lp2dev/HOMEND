@@ -1,0 +1,44 @@
+
+<md-dialog aria-label="Form">
+	<md-content class="md-padding" style="background-color: #AFEEEE; " >
+	<h3>REGISTRO {{cliente.id}}</h3>
+		<form name="myform" autocomplete="on">
+			<div layout layout-sm="column">
+				<md-input-container class="md-icon-float" ><label>Nombre :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="cliente.nombre" ng-required="true"  type="text" placeholder="Nombre"></md-input-container>
+
+				<md-input-container  class="md-icon-float" ><label>Apellidos :</label><md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon><input ng-model="cliente.apellidos" ng-required="true" placeholder="Apellido Paterno" type="text"></md-input-container>
+			</div>
+			<label style="text-align: left;">Tipo de Documento:</label><select name="tipoDoc" ng-model="cliente.tipodoc" ng-required="true">
+					    	<option value="DNI">DNI</option>
+					    	<option value="RUC">RUC</option>
+					    	<option value="LM">LM</option>
+					    	<option value="DNI MENOR">DNI MENOR</option>
+					    	<option value="PASAPORTE">PASAPORTE</option>
+					    	<option value="OTRO">OTRO</option>
+				</select>
+			<div layout layout-sm="column">
+
+				<md-input-container  class="md-icon-float"><label>Direccion :</label><md-icon class="zmdi zmdi-directions zmdi-hc-fw"></md-icon><md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon><input ng-model="cliente.direccion" ng-required="true" placeholder="Direccion" type="text"></md-input-container>
+			
+			</div>
+			<div layout layout-sm="column">
+				<md-input-container  class="md-icon-float" ><label>Numero de Documento :</label><md-icon class="zmdi zmdi-directions zmdi-hc-fw"></md-icon><md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon><input ng-model="cliente.numdoc" ng-required="true" placeholder="Numero de Documento" type="number"></md-input-container>
+				
+				<label>Telefono<input type="checkbox" name="activar" ng-model="activar"></label><br><br>
+				<md-input-container  class="md-icon-float"><label>Telefono :</label><md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon><input ng-model="cliente.telefono" placeholder="Telefono" type="number" ng-disabled="!activar" Maxlength="9" ng-required="true"></md-input-container>
+				<label>Genero:</label>
+			<h4>Hombre:</h6><input type="radio" name="genero" value="M" ng-model="cliente.genero">
+			<h4>Mujer:</h6><input type="radio" name="genero" value="F" ng-model="cliente.genero">
+			</div>
+			<md-input-container  class="md-icon-float"><label>Email (example@example.com)</label><md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon><input ng-model="cliente.email" ng-required="true" placeholder="Email" type="email" multiple></md-input-container>
+
+	</md-content>
+		</md-dialog-content>
+			<div class="md-actions" layout="row">
+				<span ></span>
+					<md-button type="submit"  ng-click="save()" class="md-raised md-primary">GUARDAR</md-button>
+					<md-button type="reset" ng-click="cancel()" class="md-raised md-warn">SALIR</md-button>
+			</div>
+		</md-dialog>
+		</form>
+</md-dialog>
